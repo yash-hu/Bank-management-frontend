@@ -1,0 +1,40 @@
+<table
+  class="table table-striped table-hover table-bordered"
+  *ngIf="accountsList"
+>
+  <thead>
+    <tr class="table-primary">
+      <th *ngFor="let header of tableHeaders">{{ header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accountsList">
+      <td>{{ account.accountNo }}</td>
+      <td>{{ account.accountType | accountType }}</td>
+      <td>Rs.{{ account.balance }}/-</td>
+      <td>{{ account.createdOn | date }}</td>
+      <td>
+        <button class="btn btn-link btn-sm" (click)="handleViewTransaction(account.accountNo)" >See Transactions</button>
+      </td>
+      <td>
+        <button
+          *ngIf="account.accountStatus == false"
+          class="btn btn-danger btn-sm"
+          (click)="handleStatusChange(account.accountNo,true)"
+        >
+          Deactivated
+        </button>
+        <button
+          *ngIf="account.accountStatus == true"
+          class="btn btn-success btn-sm"
+          (click)="handleStatusChange(account.accountNo,false)"
+        >
+          Active
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="handleDelete(account.accountNo)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

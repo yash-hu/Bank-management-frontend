@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between mx-5">
+  <div class="col-md-4">
+    <label class="ms-2 fw-bold">Search By Aadhar:</label>
+    <form
+      class="d-flex"
+      [formGroup]="searchByAadharForm"
+      (ngSubmit)="getCustomerListDataByAadhar()"
+    >
+      <input
+        class="form-control me-2"
+        type="text"
+        placeholder="Aadhar no"
+        formControlName="aadharNo"
+      />
+      <button class="btn btn-success" [disabled]="searchByAadharForm.invalid">
+        Search
+      </button>
+    </form>
+    <div
+      class="text-danger"
+      *ngIf="searchByAadharForm.controls?.['aadharNo']?.touched || searchByAadharForm.controls?.['aadharNo']?.dirty"
+    >
+      <span
+        *ngIf="searchByAadharForm.controls?.['aadharNo']?.errors?.['required']"
+        >Aadhar No is required...</span
+      >
+      <span
+        *ngIf="searchByAadharForm.controls?.['aadharNo']?.errors?.['pattern']"
+        >Invalid aadhar No...</span
+      >
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label class="ms-2 fw-bold">Search By Customer Name:</label>
+    <form
+      class="d-flex"
+      [formGroup]="searchByNameForm"
+      (ngSubmit)="getCustomerListDataByName()"
+    >
+      <input
+        class="form-control me-2"
+        id="searchByAadhar"
+        type="text"
+        placeholder="Customer Name"
+        formControlName="name"
+      />
+      <button class="btn btn-success" [disabled]="searchByNameForm.invalid">
+        Search
+      </button>
+    </form>
+    <div
+      class="text-danger"
+      *ngIf="searchByNameForm.controls?.['name']?.touched || searchByNameForm.controls?.['name']?.dirty"
+    >
+      <span *ngIf="searchByNameForm.controls?.['name']?.errors?.['required']"
+        >Name is required...</span
+      >
+      <span *ngIf="searchByNameForm.controls?.['name']?.errors?.['pattern']"
+        >Invalid Name...</span
+      >
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+  <app-get-customer-table
+    *ngIf="customerList.length > 0"
+    [customersList]="customerList"
+  ></app-get-customer-table>
+</div>

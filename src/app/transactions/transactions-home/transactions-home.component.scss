@@ -1,0 +1,19 @@
+.my-container{
+    position:fixed;
+    width: 100vw;
+    height: 80%;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar{
+    width: 9px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: whitesmoke;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: red;
+    border-radius: 7px;
+}
