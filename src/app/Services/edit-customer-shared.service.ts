@@ -3,14 +3,13 @@ import { BehaviorSubject } from 'rxjs';
 import { ICustomerModel } from '../../Interfaces/ICustomerModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EditCustomerSharedService {
-
-  constructor() { }
+  constructor() {}
 
   private data = new BehaviorSubject<ICustomerModel>({
-    aadharNo:'',
+    aadharNo: '',
     address: '',
     customerId: 0,
     dateOfBirth: new Date('2000-09-30'),

@@ -11,20 +11,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { SharedModule } from '../shared/shared.module';
 
-
-
-
 @NgModule({
   declarations: [
     CustomerHomeComponent,
     CustomersTableComponent,
     GetByAadharComponent,
     AccountsInfoComponent,
-    
+
     GetCustomerTableComponent,
     EditCustomerComponent,
-    
-    
   ],
   imports: [
     CommonModule,
@@ -33,10 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     SharedModule,
   ],
-  exports:[
-    CustomerHomeComponent,
-    AccountTypePipe,
-  ],
-  providers:[DatePipe]
+  exports: [CustomerHomeComponent, AccountTypePipe],
+  providers: [DatePipe],
 })
-export class CustomersModule { }
+export class CustomersModule {}

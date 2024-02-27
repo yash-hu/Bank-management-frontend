@@ -14,26 +14,36 @@
       <td>Rs.{{ account.balance }}/-</td>
       <td>{{ account.createdOn | date }}</td>
       <td>
-        <button class="btn btn-link btn-sm" (click)="handleViewTransaction(account.accountNo)" >See Transactions</button>
+        <button
+          class="btn btn-link btn-sm"
+          (click)="handleViewTransaction(account.accountNo)"
+        >
+          See Transactions
+        </button>
       </td>
       <td>
         <button
           *ngIf="account.accountStatus == false"
           class="btn btn-danger btn-sm"
-          (click)="handleStatusChange(account.accountNo,true)"
+          (click)="handleStatusChange(account.accountNo, true)"
         >
           Deactivated
         </button>
         <button
           *ngIf="account.accountStatus == true"
           class="btn btn-success btn-sm"
-          (click)="handleStatusChange(account.accountNo,false)"
+          (click)="handleStatusChange(account.accountNo, false)"
         >
           Active
         </button>
       </td>
       <td>
-        <button class="btn btn-danger btn-sm" (click)="handleDelete(account.accountNo)">Delete</button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="handleDelete(account.accountNo)"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   </tbody>

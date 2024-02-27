@@ -6,21 +6,25 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-get-account',
   templateUrl: './get-account.component.html',
-  styleUrl: './get-account.component.scss'
+  styleUrl: './get-account.component.scss',
 })
-export class GetAccountComponent implements OnInit{
+export class GetAccountComponent implements OnInit {
+  accountsList!: IAccountModel[];
 
-  accountsList!:IAccountModel[];
+  constructor(
+    private accountsService: AccountsService,
+    private toast: ToastrService
+  ) {}
 
-  constructor(private accountsService:AccountsService,private toast:ToastrService){}
-
-  getAllAccountsData():void{
+  getAllAccountsData(): void {
     this.accountsService.getAllAccounts().subscribe(
-      (data)=>{
-        this.accountsList=data;
+      (data) => {
+        this.accountsList = data;
       },
-      (error)=>{
-        this.toast.error(error.error,error.statusText,{positionClass:'toast-bottom-right'});
+      (error) => {
+        this.toast.error(error.error, error.statusText, {
+          positionClass: 'toast-bottom-right',
+        });
       }
     );
   }
@@ -28,5 +32,4 @@ export class GetAccountComponent implements OnInit{
   ngOnInit(): void {
     this.getAllAccountsData();
   }
-
 }

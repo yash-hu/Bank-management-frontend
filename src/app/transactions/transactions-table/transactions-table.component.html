@@ -1,6 +1,6 @@
 <table
   class="table table-striped table-hover table-bordered"
-  *ngIf="transactionList && transactionList.length>0"
+  *ngIf="transactionList && transactionList.length > 0"
 >
   <thead>
     <tr class="table-primary">
@@ -12,16 +12,18 @@
       <td>{{ transaction.transactionId }}</td>
       <td>{{ transaction.accountNo }}</td>
       <td>
-        {{transaction.transactionType?"Deposit":"Withdraw"}}
+        {{ transaction.transactionType ? "Deposit" : "Withdraw" }}
       </td>
-      <td>{{ transaction.transactionTime | date:'medium'}}</td>
+      <td>{{ transaction.transactionTime | date : "medium" }}</td>
       <td>
-        <span class="text-success" *ngIf="transaction.transactionType==true">+Rs.{{transaction.transactionAmount}}/-</span>
-        <span class="text-danger" *ngIf="transaction.transactionType==false">-Rs.{{transaction.transactionAmount}}/-</span>
+        <span class="text-success" *ngIf="transaction.transactionType == true"
+          >+Rs.{{ transaction.transactionAmount }}/-</span
+        >
+        <span class="text-danger" *ngIf="transaction.transactionType == false"
+          >-Rs.{{ transaction.transactionAmount }}/-</span
+        >
       </td>
-      <td>Rs.{{transaction.availableBalance}}/-</td>
+      <td>Rs.{{ transaction.availableBalance }}/-</td>
     </tr>
   </tbody>
 </table>
-
-

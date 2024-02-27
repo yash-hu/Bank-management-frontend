@@ -10,8 +10,6 @@ import { AccountTableComponent } from './account-table/account-table.component';
 import { AccountTypePipe } from '../Pipes/account-type.pipe';
 import { SharedModule } from '../shared/shared.module';
 
-
-
 @NgModule({
   declarations: [
     AccountsHomeComponent,
@@ -19,7 +17,6 @@ import { SharedModule } from '../shared/shared.module';
     GetAccountComponent,
     FindAccountComponent,
     AccountTableComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -28,8 +25,6 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     SharedModule,
   ],
-  exports:[
-    AccountsHomeComponent,
-  ]
+  exports: [AccountsHomeComponent],
 })
-export class AccountsModule { }
+export class AccountsModule {}

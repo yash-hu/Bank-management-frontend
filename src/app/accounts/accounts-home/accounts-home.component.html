@@ -1,37 +1,35 @@
 <ul class="nav nav-tabs ms-3 nav-tabs-border-width-2">
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        aria-current="page"
-        routerLink="/accounts"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >
-        Add Account
-        </a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/accounts/get/All"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >See Accounts</a
-      >
-    </li>  
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/accounts/get"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Find Account</a
-      >
-    </li>  
-  </ul>
-  
-  <div class="container-fluid mt-2 my-container">
-      <router-outlet></router-outlet>
-  </div>
-  
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      aria-current="page"
+      routerLink="/accounts"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Add Account
+    </a>
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      routerLink="/accounts/get/All"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >See Accounts</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      routerLink="/accounts/get"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Find Account</a
+    >
+  </li>
+</ul>
+
+<div class="container-fluid mt-2 my-container">
+  <router-outlet></router-outlet>
+</div>

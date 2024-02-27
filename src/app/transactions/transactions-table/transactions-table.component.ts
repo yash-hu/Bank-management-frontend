@@ -4,10 +4,17 @@ import { ITransactionDetailsModel } from '../../../Interfaces/ITransactionDetail
 @Component({
   selector: 'app-transactions-table',
   templateUrl: './transactions-table.component.html',
-  styleUrl: './transactions-table.component.scss'
+  styleUrl: './transactions-table.component.scss',
 })
 export class TransactionsTableComponent {
- @Input() transactionList!:ITransactionDetailsModel[];
+  @Input() transactionList!: ITransactionDetailsModel[];
 
- tableHeaders:string[]=['Transaction Id','Account No','Transaction Type','Transaction Time','Transaction Amount','Available Balance'];
+  tableHeaders: string[] = [
+    'Transaction Id',
+    'Account No',
+    'Transaction Type',
+    'Transaction Time',
+    'Transaction Amount',
+    'Available Balance',
+  ];
 }

@@ -9,21 +9,19 @@ import { AccountsModule } from './accounts/accounts.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  provideAnimations,
+} from '@angular/platform-browser/animations';
 import { AccountTypePipe } from './Pipes/account-type.pipe';
 import { DatePipe } from '@angular/common';
 import { Custom404Component } from './custom-404/custom-404.component';
 import { DateTimePipe } from './Pipes/date-time.pipe';
 import { HomeComponent } from './home/home.component';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    Custom404Component,
-    DateTimePipe,
-    HomeComponent,
-    
-  ],
+  declarations: [AppComponent, Custom404Component, DateTimePipe, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,8 +32,9 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    AuthenticationModule,
   ],
-  providers: [provideAnimations(),provideToastr()],
-  bootstrap: [AppComponent]
+  providers: [provideAnimations(), provideToastr()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

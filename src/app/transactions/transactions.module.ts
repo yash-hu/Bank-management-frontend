@@ -8,25 +8,15 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
 
-
-
 @NgModule({
   declarations: [
     TransactionsHomeComponent,
     AddTransactionComponent,
     ViewTransactionsComponent,
     TransactionsTableComponent,
-    TransactionInfoComponent
+    TransactionInfoComponent,
   ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  exports:[
-    TransactionsHomeComponent,
-    TransactionsTableComponent,
-  ]
+  imports: [CommonModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  exports: [TransactionsHomeComponent, TransactionsTableComponent],
 })
-export class TransactionsModule { }
+export class TransactionsModule {}

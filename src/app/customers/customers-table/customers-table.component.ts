@@ -22,10 +22,15 @@ export class CustomersTableComponent implements OnInit {
     'DATE OF BIRTH',
     'ADDRESS',
     'ACCOUNT',
-    'Delete'
+    'Delete',
   ];
 
-  constructor(private customerService: CustomersService,private toast:ToastrService,private editSharedService:EditCustomerSharedService,private router:Router) {}
+  constructor(
+    private customerService: CustomersService,
+    private toast: ToastrService,
+    private editSharedService: EditCustomerSharedService,
+    private router: Router
+  ) {}
 
   getAllCustomers(): void {
     this.customerService.getAllCustomers().subscribe(
@@ -39,28 +44,37 @@ export class CustomersTableComponent implements OnInit {
         }
       },
       (error) => {
+        this.toast.error(error.error, error.statusText, {
+          positionClass: 'toast-bottom-right',
+        });
         console.log(error);
       }
     );
   }
 
   //handle edit button click
-  handleEdit(customer:ICustomerModel):void{
-      this.editSharedService.setData(customer);
-      this.router.navigate(['customers/edit']);
+  handleEdit(customer: ICustomerModel): void {
+    this.editSharedService.setData(customer);
+    this.router.navigate(['customers/edit']);
   }
 
-  handleDelete(customerId:number):void{
+  handleDelete(customerId: number): void {
     this.customerService.deleteCustomer(customerId).subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
-        this.toast.success(response,"Deleted successfully...",{closeButton:true,positionClass:'toast-bottom-right'});
+        this.toast.success(response, 'Deleted successfully...', {
+          closeButton: true,
+          positionClass: 'toast-bottom-right',
+        });
         this.ngOnInit();
       },
-      (error)=>{
-        this.toast.error(error,"Something went wrong...",{closeButton:true,positionClass:'toast-bottom-right'});
+      (error) => {
+        this.toast.error(error.error, error.statusText, {
+          closeButton: true,
+          positionClass: 'toast-bottom-right',
+        });
       }
-    )
+    );
   }
   ngOnInit(): void {
     this.getAllCustomers();

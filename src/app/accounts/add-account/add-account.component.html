@@ -1,208 +1,232 @@
 <div class="container-fluid mx-2" *ngIf="accountData">
-    <h3 class="mb-4">Add Account</h3>
-  
-    <form class="form-inline row g-3" #editForm="ngForm" (ngSubmit)="handleSubmit()">
-      <div class="row col-md-12">
-        <div class="col-md-4">
-          <label class="ms-1 form-label" for="firstName">First Name :</label>
-          <input
-            class="form-control"
-            type="text"
-            name="firstName"
-            id="firstName"
-            [(ngModel)]="accountData.firstName"
-            #firstName="ngModel"
-            pattern="^[a-zA-Z]+"
-            required
-          />
-          <div *ngIf="firstName.touched || firstName.dirty" class="ms-1 text-danger">
-            <span *ngIf="firstName.errors?.['required']"
-              >FirstName is required</span
-            >
-            <span *ngIf="firstName.errors?.['pattern']">Invalid first Name</span>
-          </div>
-        </div>
-  
-        <div class="col-md-4">
-          <label class="ms-1 form-label" for="midleName">Middle Name :</label>
-          <input
-            class="form-control"
-            type="text"
-            name="midleName"
-            [(ngModel)]="accountData.middleName"
-            #middleName="ngModel"
-            id="midleName"
-            pattern="^[a-zA-Z]+"
-            required
-          />
-          <div *ngIf="middleName.touched || middleName.dirty" class="ms-1 text-danger">
-            <span *ngIf="middleName.errors?.['required']"
-              >middleName is required</span
-            >
-            <span *ngIf="middleName.errors?.['pattern']"
-              >Invalid middle Name</span
-            >
-          </div>
-        </div>
-  
-        <div class="col-md-4">
-          <label class="ms-1 form-label" for="lastName">Last Name :</label>
-          <input
-            class="form-control"
-            [(ngModel)]="accountData.lastName"
-            type="text"
-            name="lastName"
-            #lastName="ngModel"
-            id="lastName"
-            pattern="^[a-zA-Z]+"
-            required
-          />
-          <div *ngIf="lastName.touched || lastName.dirty" class="ms-1 text-danger">
-            <span *ngIf="lastName.errors?.['required']"
-              >lastName is required</span
-            >
-            <span *ngIf="lastName.errors?.['pattern']">Invalid lastName</span>
-          </div>
+  <h3 class="mb-4">Add Account</h3>
+
+  <form
+    class="form-inline row g-3"
+    #editForm="ngForm"
+    (ngSubmit)="handleSubmit()"
+  >
+    <div class="row col-md-12">
+      <div class="col-md-4">
+        <label class="ms-1 form-label" for="firstName">First Name :</label>
+        <input
+          class="form-control"
+          type="text"
+          name="firstName"
+          id="firstName"
+          [(ngModel)]="accountData.firstName"
+          #firstName="ngModel"
+          pattern="^[a-zA-Z]+"
+          required
+        />
+        <div
+          *ngIf="firstName.touched || firstName.dirty"
+          class="ms-1 text-danger"
+        >
+          <span *ngIf="firstName.errors?.['required']"
+            >FirstName is required</span
+          >
+          <span *ngIf="firstName.errors?.['pattern']">Invalid first Name</span>
         </div>
       </div>
-  
-      <div class="row col-md-12">
-        <div class="col-md-4">
-          <label class="ms-1 form-label" for="email">Email :</label>
-          <input
-            class="form-control"
-            [(ngModel)]="accountData.email"
-            type="text"
-            name="email"
-            #email="ngModel"
-            id="email"
-            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
-            required
-          />
-          <div *ngIf="email.touched || email.dirty" class="ms-1 text-danger">
-            <span *ngIf="email.errors?.['required']">email is required</span>
-            <span *ngIf="email.errors?.['pattern']">Invalid email</span>
-          </div>
-        </div>
-  
-        <div class="col-md-4">
-          <label class="ms-1 form-label" for="aadharNo">Aadhar No :</label>
-          <input
-            class="form-control"
-            type="text"
-            name="aadharNo"
-            [(ngModel)]="accountData.aadharNo"
-            id="aadharNo"
-            #aadharNo="ngModel"
-            pattern="^[0-9]{12}"
-            required
-          />
-          <div *ngIf="aadharNo.touched || aadharNo.dirty" class="ms-1 text-danger">
-            <span *ngIf="aadharNo.errors?.['required']">aadharNo is required</span>
-            <span *ngIf="aadharNo.errors?.['pattern']">Invalid aadharNo</span>
-          </div>
-        </div>
-  
-        <div class="col-md-2">
-          <label class="ms-1 form-label" for="dob">Date Of Birth :</label>
-          <input
-            class="form-control"
-            [(ngModel)]="accountData.dateOfBirth"
-            type="date"
-            name="dob"
-            #dob="ngModel"
-            id="dob"
-            min="01-01-1950"
-            required
-          />
-          <div *ngIf="dob.touched || dob.dirty" class="ms-1 text-danger">
-            <span *ngIf="dob.errors?.['required']">Birth date is required</span>
-            <span *ngIf="dob.errors?.['min']">Must Select date from 1950-01-01</span>
-          </div>
-        </div>
 
-        <div class="col-md-2">
-            <label class="ms-1 form-label" for="type">Account Type :</label>
-            <select
-              class="form-select"
-              [(ngModel)]="accountData.accountType"
-              type="number"
-              name="type"
-              #type="ngModel"
-              id="type"
-              required
-            >
-                <option value="1">Savings</option>
-                <option value="2">Current</option>
-            </select>
-            <div *ngIf="type.touched || type.dirty" class="ms-1 text-danger">
-              <span *ngIf="type.errors?.['required']">Must select Account Type</span>
-            </div>
-          </div>
-
+      <div class="col-md-4">
+        <label class="ms-1 form-label" for="midleName">Middle Name :</label>
+        <input
+          class="form-control"
+          type="text"
+          name="midleName"
+          [(ngModel)]="accountData.middleName"
+          #middleName="ngModel"
+          id="midleName"
+          pattern="^[a-zA-Z]+"
+          required
+        />
+        <div
+          *ngIf="middleName.touched || middleName.dirty"
+          class="ms-1 text-danger"
+        >
+          <span *ngIf="middleName.errors?.['required']"
+            >middleName is required</span
+          >
+          <span *ngIf="middleName.errors?.['pattern']"
+            >Invalid middle Name</span
+          >
+        </div>
       </div>
-  
-      <div class="row col-md-12">
-        <div class="col-md-4">
-          <label class="ms-1 form-label" for="phone">Mobile No :</label>
-          <div class="input-group">
-            <span class="input-group-text">+91</span>
-            <input
-              type="tel"
-              class="form-control"
-              [(ngModel)]="accountData.phone"
-              name="phone"
-              #phone="ngModel"
-              id="phone"
-              pattern="^[0-9]{10}"
-              required
-            />
-          </div>
-          <div *ngIf="phone.touched || phone.dirty" class="ms-1 text-danger">
-            <span *ngIf="phone.errors?.['required']">Mobile No is required</span>
-            <span *ngIf="phone.errors?.['pattern']">Invalid Mobile No</span>
-          </div>
+
+      <div class="col-md-4">
+        <label class="ms-1 form-label" for="lastName">Last Name :</label>
+        <input
+          class="form-control"
+          [(ngModel)]="accountData.lastName"
+          type="text"
+          name="lastName"
+          #lastName="ngModel"
+          id="lastName"
+          pattern="^[a-zA-Z]+"
+          required
+        />
+        <div
+          *ngIf="lastName.touched || lastName.dirty"
+          class="ms-1 text-danger"
+        >
+          <span *ngIf="lastName.errors?.['required']"
+            >lastName is required</span
+          >
+          <span *ngIf="lastName.errors?.['pattern']">Invalid lastName</span>
         </div>
-  
-        <div class="col-md-5">
-          <label class="ms-1 form-label" for="address">Address :</label>
+      </div>
+    </div>
+
+    <div class="row col-md-12">
+      <div class="col-md-4">
+        <label class="ms-1 form-label" for="email">Email :</label>
+        <input
+          class="form-control"
+          [(ngModel)]="accountData.email"
+          type="text"
+          name="email"
+          #email="ngModel"
+          id="email"
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+          required
+        />
+        <div *ngIf="email.touched || email.dirty" class="ms-1 text-danger">
+          <span *ngIf="email.errors?.['required']">email is required</span>
+          <span *ngIf="email.errors?.['pattern']">Invalid email</span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="ms-1 form-label" for="aadharNo">Aadhar No :</label>
+        <input
+          class="form-control"
+          type="text"
+          name="aadharNo"
+          [(ngModel)]="accountData.aadharNo"
+          id="aadharNo"
+          #aadharNo="ngModel"
+          pattern="^[0-9]{12}"
+          required
+        />
+        <div
+          *ngIf="aadharNo.touched || aadharNo.dirty"
+          class="ms-1 text-danger"
+        >
+          <span *ngIf="aadharNo.errors?.['required']"
+            >aadharNo is required</span
+          >
+          <span *ngIf="aadharNo.errors?.['pattern']">Invalid aadharNo</span>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <label class="ms-1 form-label" for="dob">Date Of Birth :</label>
+        <input
+          class="form-control"
+          [(ngModel)]="accountData.dateOfBirth"
+          type="date"
+          name="dob"
+          #dob="ngModel"
+          id="dob"
+          min="01-01-1950"
+          required
+        />
+        <div *ngIf="dob.touched || dob.dirty" class="ms-1 text-danger">
+          <span *ngIf="dob.errors?.['required']">Birth date is required</span>
+          <span *ngIf="dob.errors?.['min']"
+            >Must Select date from 1950-01-01</span
+          >
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <label class="ms-1 form-label" for="type">Account Type :</label>
+        <select
+          class="form-select"
+          [(ngModel)]="accountData.accountType"
+          type="number"
+          name="type"
+          #type="ngModel"
+          id="type"
+          required
+        >
+          <option value="1">Savings</option>
+          <option value="2">Current</option>
+        </select>
+        <div *ngIf="type.touched || type.dirty" class="ms-1 text-danger">
+          <span *ngIf="type.errors?.['required']"
+            >Must select Account Type</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="row col-md-12">
+      <div class="col-md-4">
+        <label class="ms-1 form-label" for="phone">Mobile No :</label>
+        <div class="input-group">
+          <span class="input-group-text">+91</span>
           <input
+            type="tel"
             class="form-control"
-            type="text"
-            [(ngModel)]="accountData.address"
-            name="address"
-            #address="ngModel"
-            id="address"
+            [(ngModel)]="accountData.phone"
+            name="phone"
+            #phone="ngModel"
+            id="phone"
+            pattern="^[0-9]{10}"
             required
           />
-          <div *ngIf="address.touched || address.dirty" class="ms-1 text-danger">
-              <span *ngIf="address.errors?.['required']">Address is required</span>
-            </div>
         </div>
-
-        <div class="col-md-3">
-            <label class="ms-1 form-label" for="amount">Amount :</label>
-            <input
-              class="form-control"
-              type="number"
-              [(ngModel)]="accountData.balance"
-              name="amount"
-              #amount="ngModel"
-              id="amount"
-              min="1000"
-              required
-            />
-            <div *ngIf="amount.touched || amount.dirty" class="ms-1 text-danger">
-                <span *ngIf="amount.errors?.['required']">Amount is required</span>
-                <span *ngIf="amount.errors?.['min']">Minimum amount 1000</span>
-              </div>
-          </div>
-
+        <div *ngIf="phone.touched || phone.dirty" class="ms-1 text-danger">
+          <span *ngIf="phone.errors?.['required']">Mobile No is required</span>
+          <span *ngIf="phone.errors?.['pattern']">Invalid Mobile No</span>
+        </div>
       </div>
-  
-      <div class="mt-3 row justify-content-center">
-        <button [disabled]="editForm.form.invalid" class="btn btn-primary col-md-4">ADD ACCOUNT</button>
+
+      <div class="col-md-5">
+        <label class="ms-1 form-label" for="address">Address :</label>
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="accountData.address"
+          name="address"
+          #address="ngModel"
+          id="address"
+          required
+        />
+        <div *ngIf="address.touched || address.dirty" class="ms-1 text-danger">
+          <span *ngIf="address.errors?.['required']">Address is required</span>
+        </div>
       </div>
-    </form>
-  </div>
-  
+
+      <div class="col-md-3">
+        <label class="ms-1 form-label" for="amount">Amount :</label>
+        <input
+          class="form-control"
+          type="number"
+          [(ngModel)]="accountData.balance"
+          name="amount"
+          #amount="ngModel"
+          id="amount"
+          min="1000"
+          required
+        />
+        <div *ngIf="amount.touched || amount.dirty" class="ms-1 text-danger">
+          <span *ngIf="amount.errors?.['required']">Amount is required</span>
+          <span *ngIf="amount.errors?.['min']">Minimum amount 1000</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3 row justify-content-center">
+      <button
+        [disabled]="editForm.form.invalid"
+        class="btn btn-primary col-md-4"
+      >
+        ADD ACCOUNT
+      </button>
+    </div>
+  </form>
+</div>

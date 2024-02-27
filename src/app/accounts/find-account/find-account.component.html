@@ -1,36 +1,29 @@
 <div class="col-md-4">
-    <label class="ms-2 fw-bold">Account No:</label>
-    <form
-      class="d-flex"
-      [formGroup]="searchGroup"
-      (ngSubmit)="handleSearch()"
+  <label class="ms-2 fw-bold">Account No:</label>
+  <form class="d-flex" [formGroup]="searchGroup" (ngSubmit)="handleSearch()">
+    <input
+      class="form-control me-2"
+      type="number"
+      placeholder="Account No"
+      formControlName="accountNo"
+    />
+    <button class="btn btn-success" [disabled]="searchGroup.invalid">
+      Search
+    </button>
+  </form>
+  <div
+    class="text-danger"
+    *ngIf="searchGroup.controls?.['accountNo']?.touched "
+  >
+    <span *ngIf="searchGroup.controls?.['accountNo']?.errors?.['pattern']"
+      >Account No must be of length 12</span
     >
-      <input
-        class="form-control me-2"
-        type="number"
-        placeholder="Account No"
-        formControlName="accountNo"
-      />
-      <button class="btn btn-success" [disabled]="searchGroup.invalid">
-        Search
-      </button>
-    </form>
-    <div
-      class="text-danger"
-      *ngIf="searchGroup.controls?.['accountNo']?.touched "
+    <span *ngIf="searchGroup.controls?.['accountNo']?.errors?.['required']"
+      >Must Enter account No</span
     >
-      <span
-        *ngIf="searchGroup.controls?.['accountNo']?.errors?.['pattern']"
-        >Account No must be of length 12</span
-      >
-      <span
-        *ngIf="searchGroup.controls?.['accountNo']?.errors?.['required']"
-        >Must Enter account No</span
-      >
-      
-    </div>
   </div>
+</div>
 
-  <div class="mt-3">
-    <app-account-table [accountsList]="accountsList"></app-account-table>
-  </div>
+<div class="mt-3">
+  <app-account-table [accountsList]="accountsList"></app-account-table>
+</div>

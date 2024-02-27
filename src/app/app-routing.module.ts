@@ -15,26 +15,40 @@ import { ViewTransactionsComponent } from './transactions/view-transactions/view
 import { TransactionInfoComponent } from './transactions/transaction-info/transaction-info.component';
 import { Custom404Component } from './custom-404/custom-404.component';
 import { HomeComponent } from './home/home.component';
-
+import { LoginComponent } from './authentication/login/login.component';
+import { RouteGuardService } from './Services/route-guard.service';
+import { LoginGuardService } from './Services/login-guard.service';
 
 const routes: Routes = [
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent,
+    canActivate: [RouteGuardService],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoginGuardService],
   },
   {
     path: 'customers',
     component: CustomerHomeComponent,
+    canActivate: [RouteGuardService],
     children: [
       { path: '', component: CustomersTableComponent },
       { path: 'getByAadhar', component: GetByAadharComponent },
       { path: 'accounts/:customerId', component: AccountsInfoComponent },
-      { path: 'edit', component: EditCustomerComponent },
+      {
+        path: 'edit',
+        component: EditCustomerComponent,
+        canDeactivate: [RouteGuardService],
+      },
     ],
   },
   {
     path: 'accounts',
     component: AccountsHomeComponent,
+    canActivate: [RouteGuardService],
     children: [
       { path: '', component: AddAccountComponent },
       { path: 'get/All', component: GetAccountComponent },
@@ -44,15 +58,19 @@ const routes: Routes = [
   {
     path: 'transactions',
     component: TransactionsHomeComponent,
+    canActivate: [RouteGuardService],
     children: [
       { path: '', component: AddTransactionComponent },
       { path: 'get', component: ViewTransactionsComponent },
-      { path: 'Transactions/Accounts/:accountNo',component:TransactionInfoComponent}
+      {
+        path: 'Transactions/Accounts/:accountNo',
+        component: TransactionInfoComponent,
+      },
     ],
   },
   {
-    path:'**',
-    component:Custom404Component
+    path: '**',
+    component: Custom404Component,
   },
 ];
 

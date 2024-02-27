@@ -1,0 +1,72 @@
+<div class="mx-auto w-50 mt-5">
+  <h1 class="text-center">LOG IN</h1>
+
+  <div class="mt-3">
+    <form
+      class="form-inline row g-3"
+      #loginForm="ngForm"
+      (ngSubmit)="handleSubmit()"
+    >
+      <div class="col-md-12">
+        <div class="mx-auto col-md-6">
+          <label for="username" class="form-label">Username :</label>
+          <input
+            class="form-control"
+            type="text"
+            name="username"
+            id="username"
+            [(ngModel)]="loginData.username"
+            #username="ngModel"
+            pattern="^[A-Za-z]+[A-Za-z0-9]*"
+            required
+          />
+          <div
+            *ngIf="username.touched || username.dirty"
+            class="ms-1 text-danger"
+          >
+            <span *ngIf="username.errors?.['required']"
+              >Username is required</span
+            >
+            <span *ngIf="username.errors?.['pattern']">Invalid Username</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="mx-auto col-md-6">
+          <label for="password" class="form-label">Password :</label>
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            id="password"
+            [(ngModel)]="loginData.password"
+            #password="ngModel"
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+            required
+          />
+          <div
+            *ngIf="password.touched || password.dirty"
+            class="ms-1 text-danger"
+          >
+            <span *ngIf="password.errors?.['required']"
+              >Password is required</span
+            >
+            <span *ngIf="password.errors?.['pattern']">Invalid Password</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="mx-auto col-md-6">
+          <button
+            class="btn btn-primary col-md-12"
+            [disabled]="loginForm.invalid"
+          >
+            LOG IN
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

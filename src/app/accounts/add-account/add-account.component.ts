@@ -6,12 +6,10 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-account',
   templateUrl: './add-account.component.html',
-  styleUrl: './add-account.component.scss'
+  styleUrl: './add-account.component.scss',
 })
-export class AddAccountComponent implements OnInit{
-
-
-  accountData:IAddAccountModel={
+export class AddAccountComponent implements OnInit {
+  accountData: IAddAccountModel = {
     aadharNo: '',
     address: '',
     dateOfBirth: '',
@@ -21,27 +19,30 @@ export class AddAccountComponent implements OnInit{
     middleName: '',
     phone: '',
     accountType: 1,
-    balance: 1000
-  }
+    balance: 1000,
+  };
 
-  constructor(private accountService:AccountsService,private toast:ToastrService){}
+  constructor(
+    private accountService: AccountsService,
+    private toast: ToastrService
+  ) {}
 
-  handleSubmit():void{
+  handleSubmit(): void {
     // this.accountData.accountType= +this.accountData.accountType;
     // console.log(this.accountData);
     this.accountService.addAccount(this.accountData).subscribe(
-      (response)=>{
-        this.toast.success(response,"Success",{positionClass:'toast-bottom-right'});
+      (response) => {
+        this.toast.success(response, 'Success', {
+          positionClass: 'toast-bottom-right',
+        });
       },
-      (error)=>{
-        this.toast.error(error.error,error.statusText,{positionClass:'toast-bottom-right'});
-
+      (error) => {
+        this.toast.error(error.error, error.statusText, {
+          positionClass: 'toast-bottom-right',
+        });
       }
-    )
+    );
   }
 
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-get-customer-table',
   templateUrl: './get-customer-table.component.html',
-  styleUrl: './get-customer-table.component.scss'
+  styleUrl: './get-customer-table.component.scss',
 })
 export class GetCustomerTableComponent {
   @Input() customersList!: ICustomerModel[];
@@ -21,33 +21,43 @@ export class GetCustomerTableComponent {
     'DATE OF BIRTH',
     'ADDRESS',
     'ACCOUNT',
-    'Delete'
+    'Delete',
   ];
 
-  constructor(private customerService: CustomersService,private toast:ToastrService,private editSharedService:EditCustomerSharedService,private router:Router) {}
-
-  
+  constructor(
+    private customerService: CustomersService,
+    private toast: ToastrService,
+    private editSharedService: EditCustomerSharedService,
+    private router: Router
+  ) {}
 
   //handle edit button click
-  handleEdit(customer:ICustomerModel):void{
+  handleEdit(customer: ICustomerModel): void {
     this.editSharedService.setData(customer);
     this.router.navigate(['customers/edit']);
   }
 
-  handleDelete(customerId:number):void{
+  handleDelete(customerId: number): void {
     this.customerService.deleteCustomer(customerId).subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
-        this.toast.success(response,"Deleted successfully...",{closeButton:true,positionClass:'toast-bottom-right'});
-        this.customersList=this.customersList.filter(customer=>customer.customerId!=customerId);
+        this.toast.success(response, 'Deleted successfully...', {
+          closeButton: true,
+          positionClass: 'toast-bottom-right',
+        });
+        this.customersList = this.customersList.filter(
+          (customer) => customer.customerId != customerId
+        );
         this.ngOnInit();
       },
-      (error)=>{
-        this.toast.error(error,"Something went wrong...",{closeButton:true,positionClass:'toast-bottom-right'});
+      (error) => {
+        this.toast.error(error.error, error.statusText, {
+          closeButton: true,
+          positionClass: 'toast-bottom-right',
+        });
       }
-    )
+    );
   }
-  ngOnInit(): void {
-
-  }
+  
+  ngOnInit(): void {}
 }

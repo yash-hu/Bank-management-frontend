@@ -14,10 +14,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a
-          class="nav-link"
-          routerLink="/customers"
-          routerLinkActive="active"
+        <a class="nav-link" routerLink="/customers" routerLinkActive="active"
           >Customers</a
         >
         <a class="nav-link" routerLink="/accounts" routerLinkActive="active"
@@ -26,6 +23,9 @@
         <a class="nav-link" routerLink="/transactions" routerLinkActive="active"
           >Transactions</a
         >
+      </div>
+      <div *ngIf="authService.isLoggedIn()" class="ms-auto me-2">
+        <a class="btn btn-info" (click)="handleLogout()">Log out</a>
       </div>
     </div>
   </div>

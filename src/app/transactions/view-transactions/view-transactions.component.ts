@@ -32,7 +32,6 @@ export class ViewTransactionsComponent {
   });
 
   getTransactionListByAccountNo(): void {
-    
     this.transactionService
       .getTransactionsByAccountNo(this.searchByAccountNoForm.value.accountNo)
       .subscribe(
@@ -56,15 +55,20 @@ export class ViewTransactionsComponent {
   }
 
   getTransactionListByTransactionId(): void {
-  
-    this.transactionService.getTransactionsByTransactionId(this.searchByTransactionIdForm.value.transactionId).subscribe(
-      (data)=>{
-        this.transactionsList=[data];
-      },
-      (error)=>{
-        this.toast.error(error.error,error.statusText,{positionClass:'toast-bottom-right'});
-        this.transactionsList=[];
-      }
-    )
+    this.transactionService
+      .getTransactionsByTransactionId(
+        this.searchByTransactionIdForm.value.transactionId
+      )
+      .subscribe(
+        (data) => {
+          this.transactionsList = [data];
+        },
+        (error) => {
+          this.toast.error(error.error, error.statusText, {
+            positionClass: 'toast-bottom-right',
+          });
+          this.transactionsList = [];
+        }
+      );
   }
 }
