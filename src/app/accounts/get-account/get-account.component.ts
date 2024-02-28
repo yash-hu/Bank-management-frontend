@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAccountModel } from '../../../Interfaces/IAccountModel';
 import { AccountsService } from '../../Services/accounts.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-get-account',
@@ -14,7 +15,7 @@ export class GetAccountComponent implements OnInit {
   constructor(
     private accountsService: AccountsService,
     private toast: ToastrService
-  ) {}
+  ) {} 
 
   getAllAccountsData(): void {
     this.accountsService.getAllAccounts().subscribe(

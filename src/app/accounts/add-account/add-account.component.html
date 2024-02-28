@@ -93,7 +93,7 @@
           required
         />
         <div *ngIf="email.touched || email.dirty" class="ms-1 text-danger">
-          <span *ngIf="email.errors?.['required']">email is required</span>
+          <span *ngIf="email.errors?.['required']">Email is required</span>
           <span *ngIf="email.errors?.['pattern']">Invalid email</span>
         </div>
       </div>
@@ -115,9 +115,9 @@
           class="ms-1 text-danger"
         >
           <span *ngIf="aadharNo.errors?.['required']"
-            >aadharNo is required</span
+            >Aadhar No is required</span
           >
-          <span *ngIf="aadharNo.errors?.['pattern']">Invalid aadharNo</span>
+          <span *ngIf="aadharNo.errors?.['pattern']">Invalid Aadhar No</span>
         </div>
       </div>
 

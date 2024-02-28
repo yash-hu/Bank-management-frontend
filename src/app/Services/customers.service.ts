@@ -33,6 +33,10 @@ export class CustomersService {
     return this.httpclient.get<ICustomerModel>(`${this.BaseUrl}/${aadharNo}`);
   }
 
+  getCustomerByAccountNo(accountNo:number):Observable<ICustomerModel>{
+    return this.httpclient.get<ICustomerModel>(`${this.BaseUrl}/Account/${accountNo}`);
+  }
+
   getCustomersBySimilarName(name: string): Observable<ICustomerModel[]> {
     return this.httpclient.get<ICustomerModel[]>(`${this.BaseUrl}/All/${name}`);
   }

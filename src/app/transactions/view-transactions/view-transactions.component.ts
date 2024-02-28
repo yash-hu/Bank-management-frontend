@@ -46,11 +46,19 @@ export class ViewTransactionsComponent {
           }
         },
         (error) => {
-          this.toast.error(error.error, error.statusText, {
-            positionClass: 'toast-bottom-right',
-          });
+          // console.log(error);
+          if(error.statusText==='Unknown Error'){
+            this.toast.error("Sever is offline", "Server error", {
+              positionClass: 'toast-bottom-right',
+            });
+          }
+          else{
+            this.toast.error(error.error, error.statusText, {
+              positionClass: 'toast-bottom-right',
+            });
+          }
           this.transactionsList = [];
-        }
+        } 
       );
   }
 
@@ -64,9 +72,16 @@ export class ViewTransactionsComponent {
           this.transactionsList = [data];
         },
         (error) => {
-          this.toast.error(error.error, error.statusText, {
-            positionClass: 'toast-bottom-right',
-          });
+          if(error.statusText==='Unknown Error'){
+            this.toast.error("Sever is offline", "Server error", {
+              positionClass: 'toast-bottom-right',
+            });
+          }
+          else{
+            this.toast.error(error.error, error.statusText, {
+              positionClass: 'toast-bottom-right',
+            });
+          }
           this.transactionsList = [];
         }
       );

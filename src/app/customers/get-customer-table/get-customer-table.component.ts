@@ -38,25 +38,27 @@ export class GetCustomerTableComponent {
   }
 
   handleDelete(customerId: number): void {
-    this.customerService.deleteCustomer(customerId).subscribe(
-      (response) => {
-        console.log(response);
-        this.toast.success(response, 'Deleted successfully...', {
-          closeButton: true,
-          positionClass: 'toast-bottom-right',
-        });
-        this.customersList = this.customersList.filter(
-          (customer) => customer.customerId != customerId
-        );
-        this.ngOnInit();
-      },
-      (error) => {
-        this.toast.error(error.error, error.statusText, {
-          closeButton: true,
-          positionClass: 'toast-bottom-right',
-        });
-      }
-    );
+    if(confirm('Do you really want to delete?')){
+      this.customerService.deleteCustomer(customerId).subscribe(
+        (response) => {
+          console.log(response);
+          this.toast.success(response, 'Deleted successfully...', {
+            closeButton: true,
+            positionClass: 'toast-bottom-right',
+          });
+          this.customersList = this.customersList.filter(
+            (customer) => customer.customerId != customerId
+          );
+          this.ngOnInit();
+        },
+        (error) => {
+          this.toast.error(error.error, error.statusText, {
+            closeButton: true,
+            positionClass: 'toast-bottom-right',
+          });
+        }
+      );
+    }
   }
   
   ngOnInit(): void {}

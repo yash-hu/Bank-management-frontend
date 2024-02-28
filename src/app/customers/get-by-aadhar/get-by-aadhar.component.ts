@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomersService } from '../../Services/customers.service';
 import { ICustomerModel } from '../../../Interfaces/ICustomerModel';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-get-by-aadhar',
@@ -14,7 +15,8 @@ export class GetByAadharComponent {
 
   constructor(
     private customerService: CustomersService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private spinner:NgxSpinnerService
   ) {}
 
   searchByAadharForm: FormGroup = new FormGroup({
@@ -31,14 +33,43 @@ export class GetByAadharComponent {
     ]),
   });
 
+  searchByAccountNoForm: FormGroup = new FormGroup({
+    accountNo: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]{12}'),
+    ]),
+  });
+
   getCustomerListDataByAadhar(): void {
+    this.spinner.show();
     this.customerService
       .getCustomerByAadharNo(this.searchByAadharForm.value.aadharNo)
       .subscribe(
         (response) => {
+          this.spinner.hide();
           this.customerList = [response];
         },
         (error) => {
+          this.spinner.hide();
+          this.toast.error(error.error, error.statusText, {
+            positionClass: 'toast-bottom-right',
+          });
+          this.customerList = [];
+        }
+      );
+  }
+
+  getCustomerListDataByAccountNo():void{
+    this.spinner.show();
+    this.customerService
+      .getCustomerByAccountNo(this.searchByAccountNoForm.value.accountNo)
+      .subscribe(
+        (response) => {
+          this.spinner.hide();
+          this.customerList = [response];
+        },
+        (error) => {
+          this.spinner.hide();
           this.toast.error(error.error, error.statusText, {
             positionClass: 'toast-bottom-right',
           });
@@ -48,10 +79,12 @@ export class GetByAadharComponent {
   }
 
   getCustomerListDataByName(): void {
+    this.spinner.show();
     this.customerService
       .getCustomersBySimilarName(this.searchByNameForm.value.name)
       .subscribe(
         (response) => {
+          this.spinner.hide();
           if (response.length == 0) {
             this.toast.error(
               'No customers found with matching name',
@@ -64,6 +97,7 @@ export class GetByAadharComponent {
           }
         },
         (error) => {
+          this.spinner.hide();
           this.toast.error(error.error, error.statusText, {
             positionClass: 'toast-bottom-right',
           });

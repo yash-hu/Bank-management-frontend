@@ -50,21 +50,23 @@ export class AccountTableComponent {
   }
 
   handleDelete(accountNo: number): void {
-    this.accountService.deleteAccount(accountNo).subscribe(
-      (response) => {
-        this.toast.success(response, 'Success', {
-          positionClass: 'toast-bottom-right',
-        });
-        this.accountsList = this.accountsList.filter(
-          (account) => account.accountNo != accountNo
-        );
-      },
-      (error) => {
-        this.toast.error(error.error, error.statusText, {
-          positionClass: 'toast-bottom-right',
-        });
-      }
-    );
+    if(confirm('Do you really want to delete?')){
+      this.accountService.deleteAccount(accountNo).subscribe(
+        (response) => {
+          this.toast.success(response, 'Success', {
+            positionClass: 'toast-bottom-right',
+          });
+          this.accountsList = this.accountsList.filter(
+            (account) => account.accountNo != accountNo
+          );
+        },
+        (error) => {
+          this.toast.error(error.error, error.statusText, {
+            positionClass: 'toast-bottom-right',
+          });
+        }
+      );
+    }
   }
 
   handleViewTransaction(accountNo: number): void {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,7 @@ import { Custom404Component } from './custom-404/custom-404.component';
 import { DateTimePipe } from './Pipes/date-time.pipe';
 import { HomeComponent } from './home/home.component';
 import { AuthenticationModule } from './authentication/authentication.module';
+import {  NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [AppComponent, Custom404Component, DateTimePipe, HomeComponent],
@@ -33,9 +34,10 @@ import { AuthenticationModule } from './authentication/authentication.module';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     AuthenticationModule,
-    
+    NgxSpinnerModule.forRoot({type:'ball-scale-multiple'}),
   ],
   providers: [provideAnimations(), provideToastr()],
   bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

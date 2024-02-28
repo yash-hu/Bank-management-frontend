@@ -5,6 +5,7 @@ import { HttpResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { EditCustomerSharedService } from '../../Services/edit-customer-shared.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-customers-table',
@@ -29,10 +30,12 @@ export class CustomersTableComponent implements OnInit {
     private customerService: CustomersService,
     private toast: ToastrService,
     private editSharedService: EditCustomerSharedService,
-    private router: Router
+    private router: Router,
+    private spinner:NgxSpinnerService
   ) {}
 
   getAllCustomers(): void {
+    this.spinner.show();
     this.customerService.getAllCustomers().subscribe(
       (response: HttpResponse<ICustomerModel[]>) => {
         if (response.status == 200) {
@@ -42,12 +45,14 @@ export class CustomersTableComponent implements OnInit {
         } else {
           console.log(response);
         }
+        this.spinner.hide();
       },
       (error) => {
         this.toast.error(error.error, error.statusText, {
           positionClass: 'toast-bottom-right',
         });
         console.log(error);
+        this.spinner.hide();
       }
     );
   }
@@ -59,22 +64,24 @@ export class CustomersTableComponent implements OnInit {
   }
 
   handleDelete(customerId: number): void {
-    this.customerService.deleteCustomer(customerId).subscribe(
-      (response) => {
-        console.log(response);
-        this.toast.success(response, 'Deleted successfully...', {
-          closeButton: true,
-          positionClass: 'toast-bottom-right',
-        });
-        this.ngOnInit();
-      },
-      (error) => {
-        this.toast.error(error.error, error.statusText, {
-          closeButton: true,
-          positionClass: 'toast-bottom-right',
-        });
-      }
-    );
+    if(confirm("Do you really want to delete?")){
+      this.customerService.deleteCustomer(customerId).subscribe(
+        (response) => {
+          console.log(response);
+          this.toast.success(response, 'Deleted successfully...', {
+            closeButton: true,
+            positionClass: 'toast-bottom-right',
+          });
+          this.ngOnInit();
+        },
+        (error) => {
+          this.toast.error(error.error, error.statusText, {
+            closeButton: true,
+            positionClass: 'toast-bottom-right',
+          });
+        }
+      );
+    }
   }
   ngOnInit(): void {
     this.getAllCustomers();
