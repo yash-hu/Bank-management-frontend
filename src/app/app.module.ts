@@ -33,6 +33,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     AuthenticationModule,
+    
   ],
   providers: [provideAnimations(), provideToastr()],
   bootstrap: [AppComponent],

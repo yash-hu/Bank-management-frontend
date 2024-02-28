@@ -7,7 +7,7 @@
     />
   </div>
   <div class="col-md-3">
-    <div class="container-fluid h-40">
+    <div class="vstack mx-auto h-40 col-sm-8 col-md-12">
       <button
         class="btn btn-outline-primary col-md-12 my-3"
         routerLink="/customers"
@@ -43,13 +43,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Savings</td>
-            <td>7%</td>
-          </tr>
-          <tr>
-            <td>Current</td>
-            <td>0%</td>
+          <tr *ngFor="let row of InterestList">
+            <td>{{row.accountType | accountType}}</td>
+            <td>{{row.interestRate}} %</td>
           </tr>
         </tbody>
       </table>

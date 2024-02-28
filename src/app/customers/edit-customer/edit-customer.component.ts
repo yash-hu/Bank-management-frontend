@@ -46,7 +46,7 @@ export class EditCustomerComponent implements OnInit {
       (data: ICustomerModel) => {
         data.dateOfBirth = formatDate(data.dateOfBirth, 'yyyy-MM-dd', 'en-US');
         this.customerRow = data;
-        // console.log(data);
+        console.log(data);
         // console.log( typeof data);
         // console.log(this.customerRow);
       },

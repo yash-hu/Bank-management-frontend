@@ -21,7 +21,7 @@ export class EditCustomerSharedService {
   });
   currentData$ = this.data.asObservable();
 
-  setData(data: any) {
+  setData(data: ICustomerModel) {
     this.data.next(data);
   }
 }

@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RouteGuardService } from './Services/route-guard.service';
 import { LoginGuardService } from './Services/login-guard.service';
+import { EditGuardService } from './Services/edit-guard.service';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
       {
         path: 'edit',
         component: EditCustomerComponent,
+        canActivate:[EditGuardService],
         canDeactivate: [RouteGuardService],
       },
     ],
