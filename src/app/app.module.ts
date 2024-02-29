@@ -26,7 +26,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    AuthenticationModule,
+    AuthenticationModule, 
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
   ],
   providers: [provideAnimations(), provideToastr()],
