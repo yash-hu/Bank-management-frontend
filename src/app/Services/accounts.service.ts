@@ -37,4 +37,5 @@ export class AccountsService {
   getAccountByAccountNo(accountNo: number): Observable<IAccountModel> {
     return this.httpclient.get<IAccountModel>(`${this.BaseUrl}/${accountNo}`);
   }
+  
 }

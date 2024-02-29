@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AccountsHomeComponent } from './accounts-home/accounts-home.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { GetAccountComponent } from './get-account/get-account.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FindAccountComponent } from './find-account/find-account.component';
 import { AccountTableComponent } from './account-table/account-table.component';
-import { AccountTypePipe } from '../Pipes/account-type.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { AccountsRoutingModule } from './accounts-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    AccountsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,

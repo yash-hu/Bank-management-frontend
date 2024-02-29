@@ -4,9 +4,9 @@ import { TransactionsHomeComponent } from './transactions-home/transactions-home
 import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import { ViewTransactionsComponent } from './view-transactions/view-transactions.component';
 import { TransactionsTableComponent } from './transactions-table/transactions-table.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
+import { TransactionsRoutingModule } from './transactions-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,12 @@ import { TransactionInfoComponent } from './transaction-info/transaction-info.co
     TransactionsTableComponent,
     TransactionInfoComponent,
   ],
-  imports: [CommonModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    TransactionsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [TransactionsHomeComponent, TransactionsTableComponent],
 })
 export class TransactionsModule {}

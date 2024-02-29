@@ -48,19 +48,21 @@ export class AccountsInfoComponent implements OnInit {
   }
 
   handleDelete(accountNo: number) {
-    this.accountService.deleteAccount(accountNo).subscribe(
-      (response) => {
-        this.toast.success(response, 'Success', {
-          positionClass: 'toast-bottom-right',
-        });
-        this.ngOnInit();
-      },
-      (error) => {
-        this.toast.error(error.error, error.statusText, {
-          positionClass: 'toast-bottom-right',
-        });
-      }
-    );
+    if(confirm('Are you sure you want to delete?')){
+      this.accountService.deleteAccount(accountNo).subscribe(
+        (response) => {
+          this.toast.success(response, 'Success', {
+            positionClass: 'toast-bottom-right',
+          });
+          this.ngOnInit();
+        },
+        (error) => {
+          this.toast.error(error.error, error.statusText, {
+            positionClass: 'toast-bottom-right',
+          });
+        }
+      );
+    }
   }
 
   handleViewTransaction(accountNo: number): void {
