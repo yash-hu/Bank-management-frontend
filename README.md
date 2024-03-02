@@ -1,6 +1,6 @@
 # For backend of this project 
-See Bank Management API repository
-Database queries and procedures will be provided soon...
+See Bank Management API repository.
+# Database queries and procedures will be provided soon...
 
 # UI Previews
 ![image](https://github.com/yash-hu/Bank-management-frontend/assets/127395005/40cdb50e-a143-4bdd-ab6c-9431d879d9f6)
