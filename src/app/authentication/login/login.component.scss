@@ -1,0 +1,30 @@
+.mydiv{
+    // background-color:black;
+    background:url(../../../assets/pic4.jpg);
+    background-size: cover; 
+}
+
+
+.gallery{
+    width: 80%;
+    display: flex;
+    height:91vh;
+    padding: 15%;
+    gap:2px;
+}
+
+.gallery > img{
+    width: 25%;
+    height: 300px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border:1px solid white;
+    border-radius: 5px;
+    transition:all ease 0.3s;
+}
+
+.gallery > img:hover{
+    width: 100%;
+    scale: 1.1;
+    
+}
