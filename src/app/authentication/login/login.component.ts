@@ -23,7 +23,8 @@ export class LoginComponent {
 
   handleSubmit(): void {
     this.authService.login(this.loginData).subscribe(
-      (response) => {
+      (token) => {
+        localStorage.setItem('token', token);
         this.toast.success('Login Successful...', 'Success', {
           positionClass: 'toast-bottom-right',
         });

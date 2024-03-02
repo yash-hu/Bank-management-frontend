@@ -3,7 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarModule } from './navbar/navbar.module';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
 import {
   BrowserAnimationsModule,
@@ -15,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SharedModule } from './shared/shared.module';
+import { addAuthorizationHeaderInterceptor } from './Services/add-authorization-header.interceptor';
 
 @NgModule({
   declarations: [AppComponent, Custom404Component, DateTimePipe, HomeComponent],
@@ -26,10 +32,14 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    AuthenticationModule, 
+    AuthenticationModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
   ],
-  providers: [provideAnimations(), provideToastr()],
+  providers: [
+    provideAnimations(),
+    provideToastr(),
+    provideHttpClient(withInterceptors([addAuthorizationHeaderInterceptor])),
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
