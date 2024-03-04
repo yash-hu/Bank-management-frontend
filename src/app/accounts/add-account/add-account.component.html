@@ -130,13 +130,13 @@
           name="dob"
           #dob="ngModel"
           id="dob"
-          min="01-01-1950"
+          min="{{minDateStr}}"
           required
         />
         <div *ngIf="dob.touched || dob.dirty" class="ms-1 text-danger">
           <span *ngIf="dob.errors?.['required']">Birth date is required</span>
           <span *ngIf="dob.errors?.['min']"
-            >Must Select date from 1950-01-01</span
+            >Must Select date from 1940-01-01</span
           >
         </div>
       </div>
