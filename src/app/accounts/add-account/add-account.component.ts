@@ -23,6 +23,9 @@ export class AddAccountComponent implements OnInit {
     balance: 1000,
   };
 
+  minDate:Date=new Date('1950-01-01');
+  minDateStr:string='1940-01-01';
+
   constructor(
     private accountService: AccountsService,
     private toast: ToastrService,
